@@ -31,13 +31,25 @@ The model is able to read any format of the Daya Bay dataset and produce a measu
     * Mirror: public access, issue tracker: https://github.com/dagflow-team/dayabay-model
     * PYPI: https://pypi.org/project/dayabay-model
 - Data:
-    * Full Daya Bay data release: https://doi.org/10.5281/zenodo.17587229
+    * Full Data Release of the Daya Bay Reactor Neutrino Experiment: https://doi.org/10.5281/zenodo.17587229
     * Analysis dataset, PYPI: https://pypi.org/project/dayabay-model
-    * Analysis dataset, github: https://pypi.org/project/dayabay-model
+    * Analysis dataset, github: https://github.com/dayabay-experiment/dayabay-data-official
+
+## Overview
+
+### Data model
+
+The released data is available in a variety of file formats (ROOT, hdf5, npz, tsv). All files follow the same conceptual schema and provide a set of key/value pairs. File names indicate the set of keys to expect and in some cases the context of the data (eg a particular subdetector).  Values are arrays. For detailed description of the expected file and key names see: [https://github.com/dayabay-experiment/dayabay-data-official](https://github.com/dayabay-experiment/dayabay-data-official).
+
+### Processing model
+
+The user may process the data with their own software while Daya Bay also provides a reference processing framework and a set of processing components based on the dag-modelling package. This framework processes the data through a lazy evaluated directed acyclic data-flow programming graph with a set of functional nodes. 
+
+### Analysis examples
+
+The typical workflow considers installation of the Daya Bay model via PYPI and using it in the analysis from within python. While minimal working examples may be found in this repository more comprehensive cases of the fits and statistical analysis are provided in a dedicated [dayabay-analysis](https://github.com/dagflow-team/dayabay-analysis) repository.
 
 ## Working with the model
-
-The typical workflow considers installation of the Daya Bay model via PYPI and using it in the analysis from within python. Minimal usage examples may be found in this repository while more comprehensive cases of the fits and statsitical analysis are provided in a dedicated [dayabay-analysis](https://github.com/dagflow-team/dayabay-analysis) repository.
 
 ### Minimal working examples
 
