@@ -10,6 +10,7 @@
 [![github-data](https://img.shields.io/badge/github-data-green?logo=github)](https://github.com/dayabay-experiment/dayabay-data-official)
 [![pypi-data](https://img.shields.io/badge/pypi-data-green?logo=pypi&logoColor=green)](https://pypi.org/project/dayabay-data-official)
 [![zenodo](https://img.shields.io/badge/zenodo-data-green?logo=zenodo&logoColor=green)](https://doi.org/10.5281/zenodo.17587229)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## Contents 
