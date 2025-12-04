@@ -3,6 +3,12 @@
 [![python](https://img.shields.io/badge/python-3.11-purple.svg)](https://www.python.org/)
 [![pipeline](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/pipeline.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/commits/main)
 [![coverage report](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/coverage.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/-/commits/main)
+[![github](https://img.shields.io/badge/github-public-blue?logo=github)](https://github.com/dagflow-team/dayabay-model)
+[![gitlab](https://img.shields.io/badge/gitlab-dev-blue?logo=github)](https://git.jinr.ru/dagflow-team/dayabay-model)
+[![pypi](https://img.shields.io/badge/pypi-release-blue?logo=pypi&logoColor=green)](https://git.jinr.ru/dagflow-team/dayabay-model)
+[![pypi](https://img.shields.io/badge/pypi-data-green?logo=pypi&logoColor=green)](https://git.jinr.ru/dagflow-team/dayabay-model)
+[![zenodo](https://img.shields.io/badge/zenodo-data-green?logo=zenodo&logoColor=green)](https://git.jinr.ru/dagflow-team/dayabay-model)
+
 
 ## Contents 
 
