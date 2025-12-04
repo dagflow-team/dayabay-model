@@ -4,19 +4,21 @@
 [![pipeline](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/pipeline.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/commits/main)
 [![coverage report](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/coverage.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/-/commits/main)
 
+## TOC 
+
 [TOC]
 
 ## Summary
 
-The repository stores the model of the Daya Bay Reactor Neutrino experiment dedicated to work with Full  Daya Bay dataset and perform neutrino oscillation analysis based on gadolinium capture data.
+The repository stores the model of the Daya Bay Reactor Neutrino experiment dedicated to work with Full Daya Bay dataset and perform neutrino oscillation analysis based on gadolinium capture data.
 
 The Daya Bay Reactor Neutrino Experiment took data from 2011 to 2020 in China. It obtained a sample of 5.55 million IBD events with the final-state neutron captured on gadolinium (nGd). This sample was collected by eight identically designed antineutrino detectors (AD) observing antineutrino flux from six nuclear power plants located at baselines between 400 m and 2 km. It covers 3158 days of operation.
 
 ## Repositories
 
-- Development/CI: https://git.jinr.ru/dagflow-team/dayabay-model-official
-- Contact/pypi/mirror: https://github.com/dagflow-team/dayabay-model-official
-- PYPI: https://pypi.org/project/dayabay-model-official
+- Main: development, CI: https://git.jinr.ru/dagflow-team/dayabay-model
+- Mirror: public access, issue tracker: https://github.com/dagflow-team/dayabay-model
+- PYPI: https://pypi.org/project/dayabay-model
 
 ## Working with the model
 
