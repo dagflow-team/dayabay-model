@@ -4,9 +4,11 @@
 [![pipeline](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/pipeline.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/commits/main)
 [![coverage report](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/coverage.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/-/commits/main)
 [![github](https://img.shields.io/badge/github-public-blue?logo=github)](https://github.com/dagflow-team/dayabay-model)
-[![gitlab](https://img.shields.io/badge/gitlab-dev-blue?logo=github)](https://git.jinr.ru/dagflow-team/dayabay-model)
-[![pypi](https://img.shields.io/badge/pypi-release-blue?logo=pypi&logoColor=green)](https://pypi.org/project/dayabay-model)
-[![pypi](https://img.shields.io/badge/pypi-data-green?logo=pypi&logoColor=green)](https://pypi.org/project/dayabay-data-official)
+[![gitlab](https://img.shields.io/badge/gitlab-dev-blue?logo=gitlab)](https://git.jinr.ru/dagflow-team/dayabay-model)
+[![github-framework](https://img.shields.io/badge/github-framework-blue?logo=github)](https://github.com/dagflow-team/dag-modelling)
+[![pypi-release](https://img.shields.io/badge/pypi-release-blue?logo=pypi&logoColor=green)](https://pypi.org/project/dayabay-model)
+[![github-data](https://img.shields.io/badge/github-data-green?logo=github)](https://github.com/dayabay-experiment/dayabay-data-official)
+[![pypi-data](https://img.shields.io/badge/pypi-data-green?logo=pypi&logoColor=green)](https://pypi.org/project/dayabay-data-official)
 [![zenodo](https://img.shields.io/badge/zenodo-data-green?logo=zenodo&logoColor=green)](https://doi.org/10.5281/zenodo.17587229)
 
 
@@ -16,15 +18,22 @@
 
 ## Summary
 
-The repository stores the model of the Daya Bay Reactor Neutrino experiment dedicated to work with Full Daya Bay dataset and perform neutrino oscillation analysis based on gadolinium capture data.
+The repository contains the model of the Daya Bay Reactor Neutrino experiment dedicated to work with Full Daya Bay dataset and perform neutrino oscillation analysis based on gadolinium capture data.
 
 The Daya Bay Reactor Neutrino Experiment took data from 2011 to 2020 in China. It obtained a sample of 5.55 million IBD events with the final-state neutron captured on gadolinium (nGd). This sample was collected by eight identically designed antineutrino detectors (AD) observing antineutrino flux from six nuclear power plants located at baselines between 400 m and 2 km. It covers 3158 days of operation.
 
+The model is able to read any format of the Daya Bay dataset and produce a measurement of sin²2θ₁₃ and Δm²₃₂, consistent with the publication.
+
 ## Repositories
 
-- Main: development, CI: https://git.jinr.ru/dagflow-team/dayabay-model
-- Mirror: public access, issue tracker: https://github.com/dagflow-team/dayabay-model
-- PYPI: https://pypi.org/project/dayabay-model
+- Code:
+    * Main: development, CI: https://git.jinr.ru/dagflow-team/dayabay-model
+    * Mirror: public access, issue tracker: https://github.com/dagflow-team/dayabay-model
+    * PYPI: https://pypi.org/project/dayabay-model
+- Data:
+    * Full Daya Bay data release: https://doi.org/10.5281/zenodo.17587229
+    * Analysis dataset, PYPI: https://pypi.org/project/dayabay-model
+    * Analysis dataset, github: https://pypi.org/project/dayabay-model
 
 ## Working with the model
 
