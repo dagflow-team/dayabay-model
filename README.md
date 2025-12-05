@@ -34,13 +34,13 @@ The model is able to read any format of the Daya Bay dataset and produce a measu
 - Data:
     * Full Data Release of the Daya Bay Reactor Neutrino Experiment: https://doi.org/10.5281/zenodo.17587229
     * Analysis dataset, PYPI: https://pypi.org/project/dayabay-model
-    * Analysis dataset, github: https://github.com/dayabay-experiment/dayabay-data-official
+    * Analysis dataset, GitHub: https://github.com/dayabay-experiment/dayabay-data-official
 
 ## Overview
 
 ### Data model
 
-The released data is available in a variety of file formats (ROOT, hdf5, npz, tsv). All files follow the same conceptual schema and provide a set of key/value pairs. File names indicate the set of keys to expect and in some cases the context of the data (eg a particular subdetector).  Values are arrays. For detailed description of the expected file and key names see: [https://github.com/dayabay-experiment/dayabay-data-official](https://github.com/dayabay-experiment/dayabay-data-official).
+The released Daya Bay data is available in a variety of file formats (ROOT, hdf5, npz, tsv). All files follow the same conceptual schema and provide a set of key/value pairs. File names indicate the set of keys to expect and in some cases the context of the data (e.g. a particular sub-detector).  Values are arrays. For detailed description of the expected file and key names see: [https://github.com/dayabay-experiment/dayabay-data-official](https://github.com/dayabay-experiment/dayabay-data-official).
 
 ### Processing model
 
@@ -52,33 +52,31 @@ The typical workflow considers installation of the Daya Bay model via PYPI and u
 
 ## Working with the model
 
-### Minimal working examples
-
-The minimal working exampls are located in the folder `extras/mwe` folder. In order to run them clone this repository :
-```bash
-git clone https://github.com/dagflow-team/dayabay-model-official 
-cd dayabay-model-official
-````
-However, you can just copy examples that are listed below and run them where you want after installation of package and several others steps:
-
 ### Installation
 
-The first steps are to obtain the code and the data:
+#### Getting the code
+
+##### From Python Package Index
+
+The package may be installed with `pip` as follows:
 
 ```bash
-# install the package
-pip install dayabay-model-official
-# obtain the dataset in a preferred format
-# the file is shared via email at this stage
-# download dayabay_data_v2-npz.zip # note: to be updated
-# inpack the data
-unzip /path/to/dayabay_data_v2-npz.zip -d ./
-mv npz/ data/
-# setup environment variables
-export PYTHONPATH=$PHYTHONPATH:$PWD
+pip install dayabay-model
 ```
 
-<!-- **Alternative**: set variable value when you are running example: `PYTHONPATH=PWD python ./extras/...` -->
+The installation installs the `daybay-data-official` python module as a dependency, which provides the analysis version of the Full Daya Bay dataset.
+
+##### From GitHub
+
+To install the model from the GitHub, first, clone the repository.
+
+```bash
+git clone https://github.com/dagflow-team/dayabay-model
+cd daybay-model
+pip install -e .
+```
+
+Second, install the contents of the local module as python package, triggering also dependencies installation, including data. Note, that the argument `-e` uses symbolic links to the python files instead of copying, which makes all the modifications of the model immediately accessible.
 
 #### Simple run
 
@@ -103,7 +101,7 @@ Assuming the environment variables are set, the model ca TODO
   ```bash
   python extras/mwe/run.py
   ```
-2. Check output in console, it might be something like below
+1. Check output in console, it might be something like below
   ```bash
   INFO: Model version: model_dayabay
   INFO: Source type: npz
@@ -114,6 +112,16 @@ Assuming the environment variables are set, the model ca TODO
   [705.12741983]
   ```
   It shows non-zero value of chi-squared function because by default it loads `real` data. About choosing `real`/`asimov` data read above.
+
+### Minimal working examples
+
+The minimal working examples are located in the folder `extras/mwe` folder. In order to run them clone this repository :
+```bash
+git clone https://github.com/dagflow-team/dayabay-model-official 
+cd dayabay-model-official
+````
+However, you can just copy examples that are listed below and run them where you want after installation of package and several others steps:
+
 
 #### Custom path to model data
 
