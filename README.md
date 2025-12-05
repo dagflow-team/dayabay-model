@@ -78,9 +78,13 @@ pip install -e .
 
 Second, install the contents of the local module as python package, triggering also dependencies installation, including data. Note, that the argument `-e` uses symbolic links to the python files instead of copying, which makes all the modifications of the model immediately accessible.
 
+### Minimal working examples
+
+The minimal working examples are located in the folder `extras/mwe` folder. They are available when the code is obtained from the GitHub.
+
 #### Simple run
 
-Assuming the code is obtained from GitHub as outlined above, one can run the script [run.py](extras/mwe/run.py):
+Now one can run the script [run.py](extras/mwe/run.py):
 
 ```bash
 ./extras/mwe/run.py
@@ -115,76 +119,39 @@ INFO: Spectrum correction location: before integration
 
 The value is essentially non-zero as the initial model does not fit the real data well. 
 
-### Minimal working examples
 
-The minimal working examples are located in the folder `extras/mwe` folder. In order to run them clone this repository :
-```bash
-git clone https://github.com/dagflow-team/dayabay-model-official 
-cd dayabay-model-official
-````
-However, you can just copy examples that are listed below and run them where you want after installation of package and several others steps:
+#### Specifying the path to the data
+
+The path to the data may be specified via `path_data` constructor argument of the `model_dayabay` class as follows:
+
+```python
+from dayabay_model_official import model_dayabay
+
+model = model_dayabay(path_data="dayabay-data-official/npz")
+print(model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+```
+
+The code may be found in [run-custom-data-path.py](extras/mwe/run-custom-data-path.py) example.
 
 
-#### Custom path to model data
+#### Switching between real data and Asimov pseudo-data
 
-Sometimes it is useful to load data model from specific directory. For this aim you may want to use `path_data` parameter of `model_dayabay`.
+The `real` data is loaded to model by default. However, it is possible to switch between `real` and `asimov` datasets with `switch_data(type: str)` method. Here:
+- `real` refers to the histograms with IBD candidates of the Full Daya Bay data release.
+- `asimov` will use the prediction of the model as an average pseudo-data. The prediction will be fixed.
 
-1. Also, you may pass custom path to data, if you put `path_data` parameter to model. For example,
-  ```python
-  from dayabay_model_official import model_dayabay
+The example script is [extras/mwe/run-switch-asimov-real-data.py](extras/mwe/run-switch-asimov-real-data.py):
 
-  model = model_dayabay(path_data="dayabay-data-official/npz")
-  print(model.storage["outputs.statistic.full.pull.chi2cnp"].data)
-  ```
-  Example can be executed:
-  ```bash
-  python extras/mwe/run-custom-data-path.py
-  ```
-  or
-  ```bash
-  PYTHONPATH=PWD python extras/mwe/run-custom-data-path.py
-  ```
-2. Example can be executed:
-  ```bash
-  python extras/mwe/run-custom-data-path.py
-  ```
-  or
-  ```bash
-  PYTHONPATH=PWD python extras/mwe/run-custom-data-path.py
-  ```
-3. **Warning**: before running this example, make sure that you have put data in `dayabay-data-official/npz`. You can do it with `data/` from previous example. Run commands:
-  ```bash
-  mkdir dayabay-data-official/
-  mv data/ dayabay-data-official/npz/
-  ```
+```python
+from dayabay_model_official import model_dayabay
 
-#### Switch between real and Asimov data
+model = model_dayabay(path_data="dayabay-data-official/npz")
 
-`real` data is loaded to model by default. However, it is possible to switch between `real` and `Asmov` datasets.
+print("CNP chi-squared (default data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
 
-Short note:
-- `real` means that will be loaded IBD candidates after selection;
-- `asimov` means that data will be replaced with mean observation of model under assumption of mean parameters.
+model.switch_data("real")
+print("CNP chi-squared (real data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
 
-1. If you want to switch between Asimov and observed data, you need to switch input in the next way
-  ```python
-  from dayabay_model_official import model_dayabay
-
-  model = model_dayabay(path_data="dayabay-data-official/npz")
-
-  print("CNP chi-squared (default data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
-
-  model.switch_data("real")
-  print("CNP chi-squared (real data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
-
-  model.switch_data("asimov")
-  print("CNP chi-squared (asimov data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
-  ```
-2. Example can be executed: 
-  ```bash
-  python extras/mwe/run-switch-asimov-real-data.py
-  ```
-  or
-  ```bash
-  PYTHONPATH=PWD python extras/mwe/run-switch-asimov-real-data.py
-  ```
+model.switch_data("asimov")
+print("CNP chi-squared (asimov data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+```
