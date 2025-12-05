@@ -80,38 +80,40 @@ Second, install the contents of the local module as python package, triggering a
 
 #### Simple run
 
-Assuming the environment variables are set, the model ca TODO
+Assuming the code is obtained from GitHub as outlined above, one can run the script [run.py](extras/mwe/run.py):
 
-1. Run script
-  ```bash
-  ./extras/mwe/run.py
-  ```
-  or
-  ```bash
-  PYTHONPATH=PWD python extras/mwe/run.py
-  ```
-  Text of script is above
-  ```python
-  from dayabay_model_official import model_dayabay
+```bash
+./extras/mwe/run.py
+```
 
-  model = model_dayabay()
-  print(model.storage["outputs.statistic.full.covmat.chi2cnp"].data)
-  ```
-  within `python`
-  ```bash
-  python extras/mwe/run.py
-  ```
-1. Check output in console, it might be something like below
-  ```bash
-  INFO: Model version: model_dayabay
-  INFO: Source type: npz
-  INFO: Data path: data
-  INFO: Concatenation mode: detector_period
-  INFO: Spectrum correction mode: exponential
-  INFO: Spectrum correction location: before integration
-  [705.12741983]
-  ```
-  It shows non-zero value of chi-squared function because by default it loads `real` data. About choosing `real`/`asimov` data read above.
+or as
+
+```bash
+PYTHONPATH=PWD python extras/mwe/run.py
+```
+
+The code:
+
+```python
+from dayabay_model_official import model_dayabay
+
+model = model_dayabay()
+print(model.storage["outputs.statistic.full.covmat.chi2cnp"].data)
+```
+
+loads the model, calculates, and prints the initial value of the χ² function to the terminal:
+
+```bash
+INFO: Model version: model_dayabay
+INFO: Source type: npz
+INFO: Data path: data
+INFO: Concatenation mode: detector_period
+INFO: Spectrum correction mode: exponential
+INFO: Spectrum correction location: before integration
+[705.12741983]
+```
+
+The value is essentially non-zero as the initial model does not fit the real data well. 
 
 ### Minimal working examples
 
