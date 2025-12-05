@@ -158,8 +158,6 @@ print("CNP chi-squared (asimov data):", model.storage["outputs.statistic.full.pu
 
 ### Usage scripts
 
-#### extras/scripts/
-
 These are the scripts showing the very basic interfaces of the model. Note, that the analysis scripts will be provided in another repository. The main reason for this is that the approach enables us to fix the model version for a long term, but still be able to update and expand the analysis examples in another repository.
 
 The examples on how to use the scripts are given in the corresponding files' headers and also may be found in `tests/shell/*.sh` scripts.
