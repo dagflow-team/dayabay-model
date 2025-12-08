@@ -15,7 +15,26 @@
 
 ## Contents 
 
-[TOC]
+- [Summary](<#summary>)
+- [Repositories](<#repositories>)
+- [Overview](<#overview>)
+    * [Data model](<#data-model>)
+    * [Processing model](<#processing-model>)
+    * [Analysis examples](<#analysis-examples>)
+- [Working with the model](<#working-with-the-model>)
+    * [Installation](<#installation>)
+        + [Getting the code](<#getting-the-code>)
+            - [From Python Package Index](<#from-python-package-index>)
+            - [From GitHub](<#from-github>)
+    * [Minimal working examples](<#minimal-working-examples>)
+        + [Simple run](<#simple-run>)
+        + [Specifying the path to the data](<#specifying-the-path-to-the-data>)
+        + [Switching between real data and Asimov pseudo-data](<#switching-between-real-data-and-asimov-pseudo-data>)
+    * [Usage scripts](<#usage-scripts>)
+    * [Other files](<#other-files>)
+        + [src/dayabay_model/](<#src/dayabay_model/>)
+        + [src/dayabay_model/bundles/](<#src/dayabay_model/bundles/>)
+        + [Unit tests](<#unit-tests>)
 
 ## Summary
 
