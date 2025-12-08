@@ -80,7 +80,7 @@ Second, install the contents of the local module as python package, triggering a
 
 ### Minimal working examples
 
-The minimal working examples are located in the folder `extras/mwe` folder. They are available when the code is obtained from the GitHub.
+The minimal working examples are located in the folder `extras/mwe` folder. They are available when the code comes from the GitHub.
 
 #### Simple run
 
@@ -158,17 +158,17 @@ print("CNP chi-squared (asimov data):", model.storage["outputs.statistic.full.pu
 
 ### Usage scripts
 
-These are the scripts showing the very basic interfaces of the model. Note, that the analysis scripts will be provided in another repository. The main reason for this is that the approach enables us to fix the model version for a long term, but still be able to update and expand the analysis examples in another repository.
+These are the scripts showing the very basic interfaces of the model. Note, that the analysis scripts are provided in another repository. The main reason for this is that the approach enables us to fix the model version for a long term, but still be able to update and expand the analysis examples in another repository.
 
 The examples on how to use the scripts are given in the corresponding files' headers and also may be found in `tests/shell/*.sh` scripts.
 
 - `dayabay-access.py` — Demonstrate how to access some of the Daya Bay data from the model.
 - `dayabay-plot-all-outputs.py` — iterate over each node (group of nodes) of the model and plot it contents with `matplotlib` to a pdf file. The titles and labels are generated based on the yaml file, shared with the model. The script produces the directory structure of pdf files, resembling the internal organization of the storage.
-- `dayabay-plot-all-subgraphs.py` — iterate over each node and plot subgraph by advancing up to two layers behind the current node and one layer forward. The subgraphs are saved into graphviz's `dot` files and may be opened interactively.
+- `dayabay-plot-all-subgraphs.py` — iterate over each node and plot sub-graph by advancing up to two layers behind the current node and one layer forward. The sub-graphs are saved into graphviz's dot files and may be opened interactively.
 - `dayabay-plot-detector-data.py` — plot time dependent detector data.
 - `dayabay-plot-reactor-data.py` — plot time dependent reactor data.
-- `dayabay-print-internal-data.py` — print the contents of the internal storage to the stdout. May print free, constrained or fixed parameters; the internal and final arrays. print path, values and uncertainties (for parameters), dimensions (for arrays) and their text description, derived from the yaml file.
-- `dayabay-print-parameters-latex.py` — for each group of parameters create a latex file with information, including name, description, values and uncertainties.
+- `dayabay-print-internal-data.py` — print the contents of the internal storage to the stdout. May print free, constrained or fixed parameters; the internal and final arrays. Print path, values and uncertainties (for parameters), dimensions (for arrays) and their text description, derived from the yaml file.
+- `dayabay-print-parameters-latex.py` — for each group of parameters creates a latex file with information, including name, description, values and uncertainties.
 - `dayabay-print-parameters-text.py` — save the list of parameters into a text file including names, values and uncertainties.
 - `dayabay-print-summary.py` — print Daya Bay summary data to stdout or to output files. Yields 4 tables: for each of 3 data taking periods and a total one. The results correspond to the Table I from Physical Review Letters 130, 161802 (2023).
 - `dayabay-save-detector-response-matrices.py` — compute and save the detector response matrices and, optionally, plot them.
@@ -195,5 +195,5 @@ These are the supplementary functions to work with some of the input data, which
 
 #### Unit tests
 
-- `tests/test_model_dayabay.py` — a unit test, which is run at gitlab CI (continuous integration) on each commit to `main` or to the branch, associated with merge request (pull request). It ensures the model may be run and evaluated.
+- `tests/test_model_dayabay.py` — a unit test, which is run at GitLab CI (continuous integration) on each commit to `main` or to the branch, associated with merge request (pull request). It ensures the model may be run and evaluated.
 - `to be added from another branch` — ensures that the model reading 4 different input format yields consistent results: fully consistent for binary formats, and almost consistent within relative accuracy of 10⁻¹¹ for the text format.
