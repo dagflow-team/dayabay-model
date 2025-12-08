@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 requires = [ "packaging", "setuptools", "wheel" ]
 
 [project]
-name = "dayabay-model-official"
+name = "dayabay-model"
 version = "1.7.0"
 description = "Model of the Daya Bay Reactor Neutrino Experiment for neutrino oscillation analysis based official data release."
 readme = "README.md"
