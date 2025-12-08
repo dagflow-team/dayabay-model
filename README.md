@@ -166,7 +166,7 @@ The examples on how to use the scripts are given in the corresponding files' hea
 - `dayabay-plot-all-outputs.py` — iterate over each node (group of nodes) of the model and plot it contents with `matplotlib` to a pdf file. The titles and labels are generated based on the yaml file, shared with the model. The script produces the directory structure of pdf files, resembling the internal organization of the storage.
 - `dayabay-plot-all-subgraphs.py` — iterate over each node and plot sub-graph by advancing up to two layers behind the current node and one layer forward. The sub-graphs are saved into graphviz's dot files and may be opened interactively.
 - `dayabay-plot-detector-data.py` — plot time dependent detector data.
-- `dayabay-plot-reactor-data.py` — plot time dependent reactor data.
+- `dayabay-plot-neutrino-rate-data.py` — plot time dependent neutrino rate data.
 - `dayabay-print-internal-data.py` — print the contents of the internal storage to the stdout. May print free, constrained or fixed parameters; the internal and final arrays. Print path, values and uncertainties (for parameters), dimensions (for arrays) and their text description, derived from the yaml file.
 - `dayabay-print-parameters-latex.py` — for each group of parameters creates a latex file with information, including name, description, values and uncertainties.
 - `dayabay-print-parameters-text.py` — save the list of parameters into a text file including names, values and uncertainties.
@@ -188,9 +188,9 @@ This is the source folder of the package. In the root it contains:
 
 These are the supplementary functions to work with some of the input data, which are called from within a model:
 
-- `refine_reactor_data.py` — take averaged with a window of a few weeks reactor data and build arrays with daily data for reactor power and fission fractions. The 0-th day is tied to the first Daya Bay's day of data taking. No interpolation is done, the values within the period are assigned to each day of the period.
+- `refine_neutrino_rate_data.py` — take averaged with a window of a few weeks neutrino rate data and build arrays with daily data for neutrino rate. The 0-th day is tied to the first Daya Bay's day of data taking. No interpolation is done, the values within the period are assigned to each day of the period.
 - `refine_detector_data.py` — perform a similar process to the detector data and build arrays with efficiency, livetime and rate of accidentals.
-- `sync_reactor_detector_data.py` — checks the consistency of the arrays produced by the previous scripts and ensured they are synced in time.
+- `sync_neutrino_rate_detector_data.py` — checks the consistency of the arrays produced by the previous scripts and ensured they are synced in time.
 - `refine_lsnl_data.py` — interpolates and extrapolates input LSNL data.
 
 #### Unit tests
