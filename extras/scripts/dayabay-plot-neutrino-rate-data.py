@@ -9,7 +9,6 @@ $ ./extras/scripts/dayabay-plot-neutrino-rate-data.py -o "output/neutrino_rate.p
 from __future__ import annotations
 
 from argparse import Namespace
-from pathlib import Path
 
 from dag_modelling.tools.logger import set_verbosity
 from matplotlib import pyplot as plt
@@ -35,7 +34,6 @@ def main(opts: Namespace) -> None:
     storage = model.storage
 
     days_storage = storage["outputs.daily_data.days"]
-    # neutrino_rate_storage = storage["outputs.daily_data.reactor.antineutrino_rate_per_s"]
     neutrino_rate_storage = storage["outputs.daily_data.reactor.antineutrino_rate_per_s"]
 
     reactors = ["R1", "R2", "R3", "R4", "R5", "R6"]

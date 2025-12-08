@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.7.0] - 2025-11-??
+
+- feature: use data from official PYPI package `dayabay-data-official`.
+
 ## [1.6.1] - 2025-11-16
 
 - bugfix: rename package, update README, MWE, and others.

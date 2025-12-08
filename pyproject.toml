@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 requires = [ "packaging", "setuptools", "wheel" ]
 
 [project]
-name = "dayabay-model"
-version = "1.6.1"
-description = "Model of the Daya Bay reactor antineutrino experiment for neutrino oscillation analysis based on gadolinium capture data."
+name = "dayabay-model-official"
+version = "1.7.0"
+description = "Model of the Daya Bay Reactor Neutrino Experiment for neutrino oscillation analysis based official data release."
 readme = "README.md"
 license = "MIT"
 maintainers = [ { name = "DAGModelling Team", email = "dagflow@jinr.ru" } ]
-authors = [ { name = "Daya Bay Collaboration", email = "dagflow@jinr.ru" } ]
+authors = [ { name = "DAGModelling Team", email = "dagflow@jinr.ru" } ]
 requires-python = ">=3.11"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
@@ -22,6 +22,7 @@ dependencies = [
   "colorama",
   "dgm-fit>=0.2",
   "dgm-reactor-neutrino>=0.2.2",
+  # "dayabay-data-official",
   "more-itertools",
   "semver",
 ]

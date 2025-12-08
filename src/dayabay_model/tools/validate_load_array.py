@@ -1,3 +1,5 @@
+from pathlib import Path
+from numpy import ndarray, ascontiguousarray
 from collections.abc import Sequence
 from pathlib import Path
 

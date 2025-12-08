@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 from dag_modelling.core import Graph, NodeStorage
 from dag_modelling.tools.logger import INFO, logger
+from dayabay_data_official import get_path_data
 from nested_mapping import NestedMapping
 from numpy import ndarray
 from numpy.random import Generator
@@ -355,7 +356,7 @@ class model_dayabay:
             case str() | Path():
                 self._path_data = Path(path_data)
             case None:
-                self._path_data = Path("data/")
+                self._path_data = get_path_data()
             case _:
                 raise RuntimeError(f"Unsupported path option: {path_data}")
 
@@ -763,7 +764,7 @@ class model_dayabay:
             combinations[combname] = tuple(items)
 
         # Special treatment is needed for combinations of antineutrino_source and isotope as nu_neq
-        # is related to only a fraction of isotopes, while nu_snf does not index isotopes at all
+        # is related to only a fraction of isotopes, while nu_snf does not index isotopes at all.
         combinations["antineutrino_source.reactor.isotope.detector"] = (
             tuple(("nu_main",) + cmb for cmb in combinations["reactor.isotope.detector"])
             + tuple(("nu_neq",) + cmb for cmb in combinations["reactor.isotope_neq.detector"])
