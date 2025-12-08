@@ -763,7 +763,7 @@ class model_dayabay:
             combinations[combname] = tuple(items)
 
         # Special treatment is needed for combinations of antineutrino_source and isotope as nu_neq
-        # is related to only a fraction of isotopes, while nu_snf does not index isotopes at all
+        # is related to only a fraction of isotopes, while nu_snf does not index isotopes at all.
         combinations["antineutrino_source.reactor.isotope.detector"] = (
             tuple(("nu_main",) + cmb for cmb in combinations["reactor.isotope.detector"])
             + tuple(("nu_neq",) + cmb for cmb in combinations["reactor.isotope_neq.detector"])
