@@ -145,7 +145,7 @@ The example script is [extras/mwe/run-switch-asimov-real-data.py](extras/mwe/run
 ```python
 from dayabay_model_official import model_dayabay
 
-model = model_dayabay(path_data="dayabay-data-official/npz")
+model = model_dayabay()
 
 print("CNP chi-squared (default data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
 
