@@ -1,8 +1,8 @@
 # The model of the Daya Bay Reactor Neutrino experiment
 
 [![python](https://img.shields.io/badge/python-3.11-purple.svg)](https://www.python.org/)
-[![pipeline](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/pipeline.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/commits/main)
-[![coverage report](https://git.jinr.ru/dagflow-team/dayabay-model-official/badges/main/coverage.svg)](https://git.jinr.ru/dagflow-team/dayabay-model-official/-/commits/main)
+[![pipeline](https://git.jinr.ru/dagflow-team/dayabay-model/badges/main/pipeline.svg)](https://git.jinr.ru/dagflow-team/dayabay-model/commits/main)
+[![coverage report](https://git.jinr.ru/dagflow-team/dayabay-model/badges/main/coverage.svg)](https://git.jinr.ru/dagflow-team/dayabay-model/-/commits/main)
 [![github](https://img.shields.io/badge/github-public-blue?logo=github)](https://github.com/dagflow-team/dayabay-model)
 [![gitlab](https://img.shields.io/badge/gitlab-dev-blue?logo=gitlab)](https://git.jinr.ru/dagflow-team/dayabay-model)
 [![github-framework](https://img.shields.io/badge/github-framework-blue?logo=github)](https://github.com/dagflow-team/dag-modelling)
@@ -99,7 +99,7 @@ PYTHONPATH=PWD python extras/mwe/run.py
 The code:
 
 ```python
-from dayabay_model_official import model_dayabay
+from dayabay_model import model_dayabay
 
 model = model_dayabay()
 print(model.storage["outputs.statistic.full.covmat.chi2cnp"].data)
@@ -125,7 +125,7 @@ The value is essentially non-zero as the initial model does not fit the real dat
 The path to the data may be specified via `path_data` constructor argument of the `model_dayabay` class as follows:
 
 ```python
-from dayabay_model_official import model_dayabay
+from dayabay_model import model_dayabay
 
 model = model_dayabay(path_data="dayabay-data-official/npz")
 print(model.storage["outputs.statistic.full.pull.chi2cnp"].data)
@@ -143,7 +143,7 @@ The `real` data is loaded to model by default. However, it is possible to switch
 The example script is [extras/mwe/run-switch-asimov-real-data.py](extras/mwe/run-switch-asimov-real-data.py):
 
 ```python
-from dayabay_model_official import model_dayabay
+from dayabay_model import model_dayabay
 
 model = model_dayabay()
 
@@ -162,38 +162,38 @@ These are the scripts showing the very basic interfaces of the model. Note, that
 
 The examples on how to use the scripts are given in the corresponding files' headers and also may be found in `tests/shell/*.sh` scripts.
 
-- `dayabay-access.py` — Demonstrate how to access some of the Daya Bay data from the model.
-- `dayabay-plot-all-outputs.py` — iterate over each node (group of nodes) of the model and plot it contents with `matplotlib` to a pdf file. The titles and labels are generated based on the yaml file, shared with the model. The script produces the directory structure of pdf files, resembling the internal organization of the storage.
-- `dayabay-plot-all-subgraphs.py` — iterate over each node and plot sub-graph by advancing up to two layers behind the current node and one layer forward. The sub-graphs are saved into graphviz's dot files and may be opened interactively.
-- `dayabay-plot-detector-data.py` — plot time dependent detector data.
-- `dayabay-plot-neutrino-rate-data.py` — plot time dependent neutrino rate data.
-- `dayabay-print-internal-data.py` — print the contents of the internal storage to the stdout. May print free, constrained or fixed parameters; the internal and final arrays. Print path, values and uncertainties (for parameters), dimensions (for arrays) and their text description, derived from the yaml file.
-- `dayabay-print-parameters-latex.py` — for each group of parameters creates a latex file with information, including name, description, values and uncertainties.
-- `dayabay-print-parameters-text.py` — save the list of parameters into a text file including names, values and uncertainties.
-- `dayabay-print-summary.py` — print Daya Bay summary data to stdout or to output files. Yields 4 tables: for each of 3 data taking periods and a total one. The results correspond to the Table I from Physical Review Letters 130, 161802 (2023).
-- `dayabay-save-detector-response-matrices.py` — compute and save the detector response matrices and, optionally, plot them.
-- `dayabay-save-outputs-to-root.py` — save the memory buffer of each output in the storage to the root file, preserving the location structure.
-- `dayabay-save-parameters-to-latex-datax.py` — save the current values, central values and uncertainties of the parameters to the tex file to be used with [LaTeX datax](https://ctan.org/pkg/datax) package.
+- [dayabay-access.py](extras/scripts/dayabay-access.py) — Demonstrate how to access some of the Daya Bay data from the model.
+- [dayabay-plot-all-outputs.py](extras/scripts/dayabay-plot-all-outputs.py) — iterate over each node (group of nodes) of the model and plot it contents with `matplotlib` to a pdf file. The titles and labels are generated based on the yaml file, shared with the model. The script produces the directory structure of pdf files, resembling the internal organization of the storage.
+- [dayabay-plot-all-subgraphs.py](extras/scripts/dayabay-plot-all-subgraphs.py) — iterate over each node and plot sub-graph by advancing up to two layers behind the current node and one layer forward. The sub-graphs are saved into graphviz's dot files and may be opened interactively.
+- [dayabay-plot-detector-data.py](extras/scripts/dayabay-plot-detector-data.py) — plot time dependent detector data.
+- [dayabay-plot-neutrino-rate-data.py](extras/scripts/dayabay-plot-neutrino-rate-data.py) — plot time dependent neutrino rate data.
+- [dayabay-print-internal-data.py](extras/scripts/dayabay-print-internal-data.py) — print the contents of the internal storage to the stdout. May print free, constrained or fixed parameters; the internal and final arrays. Print path, values and uncertainties (for parameters), dimensions (for arrays) and their text description, derived from the yaml file.
+- [dayabay-print-parameters-latex.py](extras/scripts/dayabay-print-parameters-latex.py) — for each group of parameters creates a latex file with information, including name, description, values and uncertainties.
+- [dayabay-print-parameters-text.py](extras/scripts/dayabay-print-parameters-text.py) — save the list of parameters into a text file including names, values and uncertainties.
+- [dayabay-print-summary.py](extras/scripts/dayabay-print-summary.py) — print Daya Bay summary data to stdout or to output files. Yields 4 tables: for each of 3 data taking periods and a total one. The results correspond to the Table I from Physical Review Letters 130, 161802 (2023).
+- [dayabay-save-detector-response-matrices.py](extras/scripts/dayabay-save-detector-response-matrices.py) — compute and save the detector response matrices and, optionally, plot them.
+- [dayabay-save-outputs-to-root.py](extras/scripts/dayabay-save-outputs-to-root.py) — save the memory buffer of each output in the storage to the root file, preserving the location structure.
+- [dayabay-save-parameters-to-latex-datax.py](extras/scripts/dayabay-save-parameters-to-latex-datax.py) — save the current values, central values and uncertainties of the parameters to the tex file to be used with [LaTeX datax](https://ctan.org/pkg/datax) package.
 
 ### Other files
 
-#### src/dayabay_model_official/
+#### src/dayabay_model/
 
 This is the source folder of the package. In the root it contains:
 
-- `model_dayabay.py` — the model itself. It contains all necessary definitions for reading the input data and building the model, including a few χ² constructions. This is the main part of the data preservation code and contains lots of comments explaining the physics and calculation procedure. This is the first file to be reviewed.
-- `model_dayabay.yaml` — dictionary with labels. A supplementary file for the model, which includes text and latex labels for the nodes and outputs of the model to be used for printing, plotting and I/O.
+- [model_dayabay.py](src/dayabay_model/model_dayabay.py) — the model itself. It contains all necessary definitions for reading the input data and building the model, including a few χ² constructions. This is the main part of the data preservation code and contains lots of comments explaining the physics and calculation procedure. This is the first file to be reviewed.
+- [model_dayabay.yaml](src/dayabay_model/model_dayabay.yaml) — dictionary with labels. A supplementary file for the model, which includes text and latex labels for the nodes and outputs of the model to be used for printing, plotting and I/O.
 
-#### src/dayabay_model_official/bundles/
+#### src/dayabay_model/bundles/
 
 These are the supplementary functions to work with some of the input data, which are called from within a model:
 
-- `refine_neutrino_rate_data.py` — take averaged with a window of a few weeks neutrino rate data and build arrays with daily data for neutrino rate. The 0-th day is tied to the first Daya Bay's day of data taking. No interpolation is done, the values within the period are assigned to each day of the period.
-- `refine_detector_data.py` — perform a similar process to the detector data and build arrays with efficiency, livetime and rate of accidentals.
-- `sync_neutrino_rate_detector_data.py` — checks the consistency of the arrays produced by the previous scripts and ensured they are synced in time.
-- `refine_lsnl_data.py` — interpolates and extrapolates input LSNL data.
+- [refine_neutrino_rate_data.py](src/dayabay_model/bundles/refine_neutrino_rate_data.py) — take averaged with a window of a few weeks neutrino rate data and build arrays with daily data for neutrino rate. The 0-th day is tied to the first Daya Bay's day of data taking. No interpolation is done, the values within the period are assigned to each day of the period.
+- [refine_detector_data.py](src/dayabay_model/bundles/refine_detector_data.py) — perform a similar process to the detector data and build arrays with efficiency, livetime and rate of accidentals.
+- [sync_neutrino_rate_detector_data.py](src/dayabay_model/bundles/sync_neutrino_rate_detector_data.py) — checks the consistency of the arrays produced by the previous scripts and ensured they are synced in time.
+- [refine_lsnl_data.py](src/dayabay_model/bundles/refine_lsnl_data.py) — interpolates and extrapolates input LSNL data.
 
 #### Unit tests
 
-- `tests/test_model_dayabay.py` — a unit test, which is run at GitLab CI (continuous integration) on each commit to `main` or to the branch, associated with merge request (pull request). It ensures the model may be run and evaluated.
-- `to be added from another branch` — ensures that the model reading 4 different input format yields consistent results: fully consistent for binary formats, and almost consistent within relative accuracy of 10⁻¹¹ for the text format.
+- [tests/test_model_dayabay.py](tests/test_model_dayabay.py) — a unit test, which is run at GitLab CI (continuous integration) on each commit to `main` or to the branch, associated with merge request (pull request). It ensures the model may be run and evaluated.
+- [tests/test_data_formats.py](tests/test_data_formats.py) — ensures that the model reading 4 different input format yields consistent results: fully consistent for binary formats, and almost consistent within relative accuracy of 10⁻¹¹ for the text format.
