@@ -128,11 +128,11 @@ def refine_neutrino_rate_data(
         target["days"] = (days_storage := {})
         for period in periods:
             period_bit = {
-                    6: 0b001,
-                    8: 0b010,
-                    7: 0b100,
-                    }[period]
-            mask_period = (n_det_mask & period_bit)>0
+                6: 0b001,
+                8: 0b010,
+                7: 0b100,
+            }[period]
+            mask_period = (n_det_mask & period_bit) > 0
             periodname = f"{period}AD"
 
             mask = mask_period
@@ -141,7 +141,9 @@ def refine_neutrino_rate_data(
                 corename,
             )
             ndays_p = ndays[mask]
-            target[("neutrino_rate_per_s",) + key] = inperiod_to_daily(neutrino_rate_per_s[mask], ndays_p)
+            target[("neutrino_rate_per_s",) + key] = inperiod_to_daily(
+                neutrino_rate_per_s[mask], ndays_p
+            )
 
             days = periods_to_days(day[mask], ndays_p)
             if isnan(days).any():
