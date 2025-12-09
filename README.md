@@ -174,6 +174,25 @@ model.switch_data("asimov")
 print("CNP chi-squared (asimov data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
 ```
 
+#### Switching between different source types of dayabay-data-official
+
+The `hdf5` dat is loaded to model by default from [dayabay-data-official](https://pypi.org/project/dayabay-data-official/) package. However, it is possible change source type of dataset between `hdf5`, `npz`, `root`, and `tsv`. It can be done via `get_path_data()` function from [dayabay-data-official](https://pypi.org/project/dayabay-data-official/) package.
+
+The example script is [extras/mwe/run-switch-source-type.py](extras/mwe/run-switch-source-type.py):
+
+```python
+from dayabay_model import model_dayabay
+from dayabay_data_official import get_path_data
+
+
+model = model_dayabay()
+print("χ² CNP (default data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+
+for source_type in ["hdf5", "root", "npz", "tsv"]:
+    model = model_dayabay(path_data=get_path_data(source_type))
+    print(f"χ² CNP ({source_type} data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+```
+
 ### Usage scripts
 
 These are the scripts showing the very basic interfaces of the model. Note, that the analysis scripts are provided in another repository. The main reason for this is that the approach enables us to fix the model version for a long term, but still be able to update and expand the analysis examples in another repository.
