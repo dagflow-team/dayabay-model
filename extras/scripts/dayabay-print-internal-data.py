@@ -34,7 +34,7 @@ def main(opts: Namespace) -> None:
 
     default_mode = not opts.print_all and not opts.print
     if default_mode:
-        opts.print = ["outputs"]
+        opts.print = [["outputs"]]
     if opts.print_all:
         print(storage.to_table(truncate="auto", df_kwargs={"columns": opts.print_columns}))
     for sources in opts.print:

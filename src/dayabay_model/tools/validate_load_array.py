@@ -5,7 +5,9 @@ from numpy import ascontiguousarray, ndarray
 from numpy.typing import NDArray
 
 
-def validate_load_array(array: str | Path | Sequence[int | float] | NDArray | None) -> Path | NDArray | None:
+def validate_load_array(
+    array: str | Path | Sequence[int | float] | NDArray | None,
+) -> Path | NDArray | None:
     result = None
     match array:
         case str() | Path():
@@ -17,7 +19,5 @@ def validate_load_array(array: str | Path | Sequence[int | float] | NDArray | No
         case None:
             result = None
         case _:
-            raise RuntimeError(
-                f"Invalid array type: {type(array).__name__}"
-            )
+            raise RuntimeError(f"Invalid array type: {type(array).__name__}")
     return result

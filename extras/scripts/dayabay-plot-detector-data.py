@@ -139,7 +139,7 @@ def main(opts: Namespace) -> None:
             if opts.output == opts.output.format(type="placeholder"):
                 output = Path(opts.output)
                 opts.output = f"{output.stem}_{{type}}{output.suffix}"
-                print("Appending `{type}` to filename: "+opts.output)
+                print("Appending `{type}` to filename: " + opts.output)
 
             fname = opts.output.format(type=plot_type)
             fig.savefig(fname)

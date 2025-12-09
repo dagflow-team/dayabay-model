@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 from dag_modelling.core import Graph, NodeStorage
 from dag_modelling.tools.logger import INFO, logger
+from dayabay_data_official import get_path_data
 from nested_mapping import NestedMapping
 from numpy import ndarray
 from numpy.random import Generator
@@ -355,7 +356,7 @@ class model_dayabay:
             case str() | Path():
                 self._path_data = Path(path_data)
             case None:
-                self._path_data = Path("data/")
+                self._path_data = get_path_data()
             case _:
                 raise RuntimeError(f"Unsupported path option: {path_data}")
 
@@ -464,13 +465,13 @@ class model_dayabay:
             "parameters.background_rate_scale_accidentals": path_parameters
             / "background_rate_scale_accidentals.yaml",
             "parameters.background_rates_uncorrelated": path_parameters
-            / f"background_rates_uncorrelated.yaml",
+            / "background_rates_uncorrelated.yaml",
             "parameters.background_rates_correlated": path_parameters
-            / f"background_rates_correlated.yaml",
+            / "background_rates_correlated.yaml",
             "parameters.background_rate_uncertainty_scale_amc": path_parameters
             / "background_rate_uncertainty_scale_amc.yaml",
             "parameters.background_rate_uncertainty_scale_site": path_parameters
-            / f"background_rate_uncertainty_scale_site.yaml",
+            / "background_rate_uncertainty_scale_site.yaml",
             "reactor_antineutrino_spectra": path_data
             / f"reactor_antineutrino_spectra_hm.{self.source_type}",
             "reactor_antineutrino_spectra_uncertainties": path_data
@@ -712,7 +713,7 @@ class model_dayabay:
         assert detectors_selected.issubset(
             detectors
         ), f"index['detector_selected'] is not consistent with index['detector']: {detectors_selected} ⊈ {detectors}"
-        index["detector_excluded"] = tuple(d for d in detectors if not d in detectors_selected)
+        index["detector_excluded"] = tuple(d for d in detectors if d not in detectors_selected)
 
         # Check there are now overlaps
         index_all = index["isotope"] + index["detector"] + index["reactor"] + index["period"]
@@ -763,7 +764,7 @@ class model_dayabay:
             combinations[combname] = tuple(items)
 
         # Special treatment is needed for combinations of antineutrino_source and isotope as nu_neq
-        # is related to only a fraction of isotopes, while nu_snf does not index isotopes at all
+        # is related to only a fraction of isotopes, while nu_snf does not index isotopes at all.
         combinations["antineutrino_source.reactor.isotope.detector"] = (
             tuple(("nu_main",) + cmb for cmb in combinations["reactor.isotope.detector"])
             + tuple(("nu_neq",) + cmb for cmb in combinations["reactor.isotope_neq.detector"])
@@ -3059,7 +3060,7 @@ class model_dayabay:
 
             outputs["eventscount.final.concatenated.selected"] = outputs.get_value(
                 f"eventscount.final.concatenated.{self.concatenation_mode}"
-                )
+            )
 
             #
             # Covariance matrices
@@ -3069,8 +3070,9 @@ class model_dayabay:
             for group in self._covariance_groups:
                 self._covariance_matrix.add_covariance_for(
                     group, parameters_nuisance_normalized[
-                    self.systematic_uncertainties_groups[group]
-                ])
+                        self.systematic_uncertainties_groups[group]
+                    ]
+                )
             self._covariance_matrix.add_covariance_sum()
 
             (
@@ -3148,7 +3150,7 @@ class model_dayabay:
 
             outputs["data.real.concatenated.selected"] = outputs.get_value(
                 f"data.real.concatenated.{self.concatenation_mode}"
-                )
+            )
 
             #
             # Summary
@@ -3409,7 +3411,6 @@ class model_dayabay:
                 "covariance.covmat_full_p.variable_stat"
             ) >> inputs.get_value("cholesky.covmat_full_p.variable_stat")
 
-
             SumMatOrDiag.replicate(name="covariance.covmat_full_n")
             outputs.get_value("data.proxy") >> nodes.get_value(
                 "covariance.covmat_full_n"
@@ -3592,10 +3593,10 @@ class model_dayabay:
 
             # CNP, stat+syst, cov. matrix (linear cobination)
             SumMatOrDiag.replicate(
-                    outputs.get_value("statistic.staterr.cnp_variance"),
-                    outputs.get_value("covariance.covmat_syst.sum"),
-                    name = "covariance.covmat_full_cnp"
-                    )
+                outputs.get_value("statistic.staterr.cnp_variance"),
+                outputs.get_value("covariance.covmat_syst.sum"),
+                name="covariance.covmat_full_cnp"
+            )
 
             # CNP Cholesky
             Cholesky.replicate(name="cholesky.covmat_full_cnp")

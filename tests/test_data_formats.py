@@ -1,6 +1,7 @@
 from dag_modelling.tools.logger import set_verbosity
 from numpy import allclose, fabs
 from pytest import fixture, mark
+from dayabay_data_official import get_path_data
 
 from dayabay_model import model_dayabay
 
@@ -15,13 +16,13 @@ set_verbosity(1)
 @fixture(scope="session")
 def reference_model():
     return model_dayabay(
-        path_data=f"{data_location}/{source_type_reference}",
+        path_data=get_path_data("hdf5")
     )
 
 @mark.parametrize("source_type", source_types_other)
 def test_dayabay_source_type(reference_model, source_type: str):
     model = model_dayabay(
-        path_data=f"{data_location}/{source_type}",
+        path_data=get_path_data(source_type)
     )
 
     outname = "outputs.eventscount.final.concatenated.detector_period"

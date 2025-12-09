@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.7.0] - 2025-12-09
+
+- feature: use data from official PYPI package `dayabay-data-official`.
+- feature: update MWE, [extra/scripts](extra/scripts) and [README.md](README.md) due to new way of loading Daya Bay dataset.
+- fix: update CI, remove outdated files.
+- lint: isort, black.
+
 ## [1.6.1] - 2025-11-16
 
 - bugfix: rename package, update README, MWE, and others.

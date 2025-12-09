@@ -12,6 +12,24 @@
 [![zenodo](https://img.shields.io/badge/zenodo-data-green?logo=zenodo&logoColor=green)](https://doi.org/10.5281/zenodo.17587229)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Summary
+
+The repository contains the model of the Daya Bay Reactor Neutrino experiment dedicated to work with Full Daya Bay dataset and perform neutrino oscillation analysis based on gadolinium capture data.
+
+The Daya Bay Reactor Neutrino Experiment took data from 2011 to 2020 in China. It obtained a sample of 5.55 million IBD events with the final-state neutron captured on gadolinium (nGd). This sample was collected by eight identically designed antineutrino detectors (AD) observing antineutrino flux from six nuclear power plants located at baselines between 400 m and 2 km. It covers 3158 days of operation.
+
+The model is able to read any format of the Daya Bay dataset and produce a measurement of sin²2θ₁₃ and Δm²₃₂, consistent with the publication.
+
+## Repositories
+
+- Code:
+    * Main: development, CI: https://git.jinr.ru/dagflow-team/dayabay-model
+    * Mirror: public access, issue tracker: https://github.com/dagflow-team/dayabay-model
+    * PYPI: https://pypi.org/project/dayabay-model
+- Data:
+    * Full Data Release of the Daya Bay Reactor Neutrino Experiment: https://doi.org/10.5281/zenodo.17587229
+    * Analysis dataset, PYPI: https://pypi.org/project/dayabay-model
+    * Analysis dataset, GitHub: https://github.com/dayabay-experiment/dayabay-data-official
 
 ## Contents 
 
@@ -35,25 +53,6 @@
         + [src/dayabay_model/](<#src/dayabay_model/>)
         + [src/dayabay_model/bundles/](<#src/dayabay_model/bundles/>)
         + [Unit tests](<#unit-tests>)
-
-## Summary
-
-The repository contains the model of the Daya Bay Reactor Neutrino experiment dedicated to work with Full Daya Bay dataset and perform neutrino oscillation analysis based on gadolinium capture data.
-
-The Daya Bay Reactor Neutrino Experiment took data from 2011 to 2020 in China. It obtained a sample of 5.55 million IBD events with the final-state neutron captured on gadolinium (nGd). This sample was collected by eight identically designed antineutrino detectors (AD) observing antineutrino flux from six nuclear power plants located at baselines between 400 m and 2 km. It covers 3158 days of operation.
-
-The model is able to read any format of the Daya Bay dataset and produce a measurement of sin²2θ₁₃ and Δm²₃₂, consistent with the publication.
-
-## Repositories
-
-- Code:
-    * Main: development, CI: https://git.jinr.ru/dagflow-team/dayabay-model
-    * Mirror: public access, issue tracker: https://github.com/dagflow-team/dayabay-model
-    * PYPI: https://pypi.org/project/dayabay-model
-- Data:
-    * Full Data Release of the Daya Bay Reactor Neutrino Experiment: https://doi.org/10.5281/zenodo.17587229
-    * Analysis dataset, PYPI: https://pypi.org/project/dayabay-model
-    * Analysis dataset, GitHub: https://github.com/dayabay-experiment/dayabay-data-official
 
 ## Overview
 
@@ -173,6 +172,27 @@ print("CNP chi-squared (real data):", model.storage["outputs.statistic.full.pull
 
 model.switch_data("asimov")
 print("CNP chi-squared (asimov data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+```
+
+#### Switching between different source types of dayabay-data-official
+
+The `hdf5` dat is loaded to model by default from [dayabay-data-official](https://pypi.org/project/dayabay-data-official/) package. However, it is possible change source type of dataset between `hdf5`, `npz`, `root`, and `tsv`. It can be done via `get_path_data()` function from [dayabay-data-official](https://pypi.org/project/dayabay-data-official/) package.
+
+The example script is [extras/mwe/run-switch-source-type.py](extras/mwe/run-switch-source-type.py):
+
+```python
+from dayabay_model import model_dayabay
+from dayabay_data_official import get_path_data
+
+
+model = model_dayabay()
+print("χ² CNP (default data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+
+for source_type in ["hdf5", "root", "npz", "tsv"]:
+    model = model_dayabay(path_data=get_path_data(source_type))
+    print(
+        f"χ² CNP ({source_type} data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data
+    )
 ```
 
 ### Usage scripts
