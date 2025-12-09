@@ -22,7 +22,7 @@ dependencies = [
   "colorama",
   "dgm-fit>=0.2",
   "dgm-reactor-neutrino>=0.2.2",
-  # "dayabay-data-official",
+  "dayabay-data-official",
   "more-itertools",
   "semver",
 ]
