@@ -141,7 +141,9 @@ exact_substitutions = {
 if __name__ == "__main__":
     from argparse import ArgumentParser
 
-    parser = ArgumentParser(description="Plot arrays/histograms/graphs from all the outputs with matplotlib")
+    parser = ArgumentParser(
+        description="Plot arrays/histograms/graphs from all the outputs with matplotlib"
+    )
     parser.add_argument("-v", "--verbose", default=1, action="count", help="verbosity level")
     parser.add_argument(
         "--path-data",

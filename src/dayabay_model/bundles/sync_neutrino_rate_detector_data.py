@@ -33,7 +33,7 @@ def sync_neutrino_rate_detector_data(
         for key, data in neutrino_rate_data.walkitems():
             if key[0] == "days":
                 continue
-            if not period in key:
+            if period not in key:
                 continue
 
             neutrino_rate_data[key] = data[slc]

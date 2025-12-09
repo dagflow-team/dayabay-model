@@ -190,7 +190,9 @@ print("χ² CNP (default data):", model.storage["outputs.statistic.full.pull.chi
 
 for source_type in ["hdf5", "root", "npz", "tsv"]:
     model = model_dayabay(path_data=get_path_data(source_type))
-    print(f"χ² CNP ({source_type} data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data)
+    print(
+        f"χ² CNP ({source_type} data):", model.storage["outputs.statistic.full.pull.chi2cnp"].data
+    )
 ```
 
 ### Usage scripts
