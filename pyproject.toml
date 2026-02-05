@@ -6,7 +6,7 @@ requires = [ "packaging", "setuptools", "wheel" ]
 [project]
 name = "dayabay-model"
 version = "1.7.1"
-description = "Model of the Daya Bay Reactor Neutrino Experiment for neutrino oscillation analysis based official data release."
+description = "The model of the Daya Bay Reactor Neutrino Experiment for neutrino oscillation analysis based on open gadolinium capture data"
 readme = "README.md"
 license = "MIT"
 maintainers = [ { name = "DAGModelling Team", email = "dagflow@jinr.ru" } ]
