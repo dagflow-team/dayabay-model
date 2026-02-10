@@ -716,7 +716,7 @@ class model_dayabay:
         assert detectors_selected.issubset(
             detectors
         ), f"index['detector_selected'] is not consistent with index['detector']: {detectors_selected} ⊈ {detectors}"
-        index["detector_excluded"] = tuple(d for d in detectors if d not in detectors_selected)
+        index["detector_excluded"] = tuple(d for d in detectors if not d in detectors_selected)
 
         # Check there are now overlaps
         index_all = index["isotope"] + index["detector"] + index["reactor"] + index["period"]
