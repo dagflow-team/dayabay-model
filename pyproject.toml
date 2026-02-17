@@ -20,15 +20,15 @@ classifiers = [
 ]
 dependencies = [
   "colorama",
-  "dgm-fit>=0.2",
-  "dgm-reactor-neutrino>=0.2.2",
+  "dgm-fit>=0.4.0",
+  "dgm-reactor-neutrino>=0.3.0",
   "dayabay-data-official",
   "more-itertools",
   "semver",
 ]
 
 optional-dependencies.test = [
-  "dgm-reactor-neutrino[test]>=0.2.2",
+  "dgm-reactor-neutrino[test]>=0.3.0",
   "ipykernel",
   "ipython",
   "ipywidgets",
