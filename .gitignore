@@ -146,3 +146,5 @@ cython_debug/
 data/
 output/
 outputs/
+
+src/dayabay_model/__version__.py
