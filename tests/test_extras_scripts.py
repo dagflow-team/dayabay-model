@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess
 from collections.abc import Sequence
 
@@ -47,7 +48,9 @@ def _check_script_result(
         for output_path in output_paths:
             if output_path is not None:
                 if stdout is not None:
-                    assert f"Write: {output_path}" in stdout
+                    assert re.finditer(f"Write: {output_path}", stdout) or re.finditer(
+                        r"Write \[[0-9]{3}/[ 0-9]{3}\]: " + output_path, stdout
+                    )
 
                 assert os.path.exists(output_path)
 
