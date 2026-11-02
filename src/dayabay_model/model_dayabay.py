@@ -2364,12 +2364,19 @@ class model_dayabay:
             # A parallel branch will be used for NEQ correction, with previous value
             # multiplied by `neq_factor=1` (simple switch) and fit defined
             # `nonequilibrium_scale`.
+            #
+            # We need to take into account, that NEQ is not calculated for ²³⁸U, while number of
+            # fissions is calculated for all the isotopes. To allow skipping relevant outputs we set
+            # `allow_unmatched_outputs=True` and explicitly provide part of the keys, which can be
+            # skipped via `unmatched_outputs_should_contain`.
             Product.replicate(
                 outputs.get_dict("reactor_detector.n_fissions_n_protons_per_cm2_scaled"),
                 parameters.get_dict("all.reactor.nonequilibrium_scale"),
                 parameters.get_value("all.reactor.neq_factor"),
                 name="reactor_detector.n_fissions_n_protons_per_cm2_neq",
                 replicate_outputs=combinations["reactor.isotope.detector.period"],
+                allow_unmatched_outputs=True,
+                unmatched_outputs_should_contain=[("U238",)]
             )
 
             # Compute similar values for SNF. Note, that it should be also multiplied by
