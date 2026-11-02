@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - chore: explicitly allow ignoring ²³⁸U for while calculating number of fissions for NEQ. This
   became required due to elevated protection level.
+- bug: `.root`-data doesn't work currently, will be fixed in a new release of the dag-modelling.
 
 ## [1.8.0] - 2026-02-24
 
