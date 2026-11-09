@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.8.2] - 2026-11-09
+
+- bug: example script, when extracting detector response matrices, ensure sparse matrices are
+  converted to dense ones.
+
 ## [1.8.1] - 2026-11-02
 
 - chore: explicitly allow ignoring ²³⁸U for while calculating number of fissions for NEQ. This
