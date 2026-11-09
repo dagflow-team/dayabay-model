@@ -17,13 +17,19 @@ saved as distinct file `key.tsv` in the `output/matrix.tsv` folder.
 from __future__ import annotations
 
 from argparse import Namespace
+from typing import TYPE_CHECKING
 
 from dag_modelling.tools.logger import set_verbosity
 from dag_modelling.tools.save_matrices import save_matrices
 from matplotlib import pyplot as plt
 from numpy import ma
+from scipy.sparse import issparse
 
 from dayabay_model import model_dayabay
+
+if TYPE_CHECKING:
+    from numpy.typing import NDArray
+    from scipy.sparse import sparray
 
 plt.rcParams.update(
     {
@@ -39,6 +45,11 @@ plt.rcParams.update(
 )
 
 
+def dense_copy(data: NDArray | sparray) -> NDArray:
+    """Copy the data of an output, a sparse matrix (dag-modelling CSR layout) as a dense one"""
+    return data.toarray() if issparse(data) else data.copy()
+
+
 def main(opts: Namespace) -> None:
     if opts.verbose:
         set_verbosity(opts.verbose)
@@ -47,9 +58,9 @@ def main(opts: Namespace) -> None:
 
     storage = model.storage
 
-    matrix_iav = storage["outputs.detector.iav.matrix_rescaled.AD11"].data.copy()
-    matrix_lsnl = storage["outputs.detector.lsnl.matrix.AD11"].data.copy()
-    matrix_eres = storage["outputs.detector.eres.matrix"].data.copy()
+    matrix_iav = storage["outputs.detector.iav.matrix_rescaled.AD11"].data_dense
+    matrix_lsnl = storage["outputs.detector.lsnl.matrix.AD11"].data_dense
+    matrix_eres = storage["outputs.detector.eres.matrix"].data_dense
     matrix_total = matrix_eres @ (matrix_lsnl @ matrix_iav)
 
     output_data = {

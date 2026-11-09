@@ -46,11 +46,10 @@ def _check_script_result(
 
     if isinstance(output_paths, Sequence):
         for output_path in output_paths:
+            rex = re.compile(r"Write( \[[0-9/]+\])?: " + output_path)
             if output_path is not None:
                 if stdout is not None:
-                    assert re.finditer(f"Write: {output_path}", stdout) or re.finditer(
-                        r"Write \[[0-9]{3}/[ 0-9]{3}\]: " + output_path, stdout
-                    )
+                    assert bool(rex.search(stdout))
 
                 assert os.path.exists(output_path)
 
