@@ -3287,7 +3287,9 @@ class model_dayabay:
                 outputs("summary.total.ibd_candidates"),
                 outputs("summary.total.eff_livetime"),
                 name="summary.total.rate_ibd_candidates_s",
-                replicate_outputs=combinations["detector"],
+                replicate_outputs=index["detector_selected"],
+                allow_skip_inputs=True,
+                skippable_inputs_should_contain=index["detector_excluded"],
             )
 
             Division.replicate(
@@ -3301,7 +3303,9 @@ class model_dayabay:
                 outputs("summary.total.rate_ibd_candidates_s"),
                 parameters["constant.conversion.seconds_in_day"],
                 name="summary.total.rate_ibd_candidates",
-                replicate_outputs=combinations["detector"],
+                replicate_outputs=index["detector_selected"],
+                allow_skip_inputs=True,
+                skippable_inputs_should_contain=index["detector_excluded"],
             )
 
             Product.replicate(
@@ -3315,7 +3319,9 @@ class model_dayabay:
                 outputs("summary.total.rate_ibd_candidates"),
                 outputs("summary.total.background_rate"),
                 name="summary.total.rate_ibd",
-                replicate_outputs=combinations["detector"],
+                replicate_outputs=index["detector_selected"],
+                allow_skip_inputs=True,
+                skippable_inputs_should_contain=index["detector_excluded"],
             )
 
             Difference.replicate(
