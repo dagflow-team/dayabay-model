@@ -36,6 +36,15 @@ def test_model_dayabay_mc_parameters():
     assert model.storage["nodes.mc.parameters.toymc"].outputs[0].data.shape[0] == 2
 
 
+def test_model_dayabay_selected():
+    detector_selected = ("AD11", "AD12", "AD21", "AD22")
+
+    model = model_dayabay(override_indices={"detector_selected": detector_selected})
+    assert not set(model.storage["outputs.eventscount.final.detector"].keys()) - set(
+        detector_selected
+    )
+
+
 def plot_graph(graph: Graph, storage: NodeStorage, output_path: str) -> None:
     GraphDot.from_graph(graph, show="all").savegraph(f"{output_path}/dayabay_v0.dot")
     GraphDot.from_graph(
