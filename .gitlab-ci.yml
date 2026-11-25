@@ -2,6 +2,9 @@ stages:
   - tests
   - publish
 
+variables:
+  PYPI_INDEX: https://pypi-mirror.gitverse.ru/simple/
+
 tests:
   image: 'python:3.12.14-bookworm'
   stage: tests
@@ -12,9 +15,9 @@ tests:
     - python3 -m venv venv
     - source venv/bin/activate
     - git lfs install --skip-repo
-    - pip install --upgrade wheel setuptools pip
-    - pip install cython
-    - pip install -e ".[test]"
+    - pip install --upgrade wheel setuptools pip --index-url $PYPI_INDEX
+    - pip install cython --index-url $PYPI_INDEX
+    - pip install -e ".[test]" --index-url $PYPI_INDEX
     - ipython kernel install --name "python3" --user
     - coverage run --source=. -m pytest
     - coverage report
