@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.8.4] - 2026-11-25
+
+- fix: add `hist_edges_strategy` to fix load of `.root` files.
+
 ## [1.8.3] - 2026-11-17
 
 - hotfix: fix usage of `detector_selected`, add test for `detector_selected`.
