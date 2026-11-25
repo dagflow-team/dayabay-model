@@ -1456,6 +1456,7 @@ class model_dayabay:
                 x="enu",
                 y="spec",
                 merge_x=True,
+                hist_edges_strategy="left",
                 replicate_outputs=index["isotope"],
             )
 
@@ -1546,6 +1547,7 @@ class model_dayabay:
                 x="enu",
                 y="nonequilibrium_correction",
                 merge_x=True,
+                hist_edges_strategy="left",
                 filenames=cfg_file_mapping["nonequilibrium_correction"],
                 replicate_outputs=index["isotope_neq"],
             )
@@ -1588,6 +1590,7 @@ class model_dayabay:
                 x="enu",
                 y="snf_correction",
                 merge_x=True,
+                hist_edges_strategy="left",
                 filenames=cfg_file_mapping["snf_correction"],
                 replicate_outputs=index["reactor"],
             )
@@ -1801,6 +1804,7 @@ class model_dayabay:
                 x="enu_centers",
                 y="uncertainty",
                 merge_x=True,
+                hist_edges_strategy="left",
                 replicate_outputs=combinations["antineutrino_unc.isotope"],
             )
 
@@ -2629,6 +2633,7 @@ class model_dayabay:
                 x="escint",
                 y="evis_parts",
                 merge_x=True,
+                hist_edges_strategy="left",
                 filenames=cfg_file_mapping["lsnl_curves"],
                 replicate_outputs=index["lsnl"],
             )
